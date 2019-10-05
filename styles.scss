@@ -1,0 +1,56 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.foo {
+  color: red;
+
+  @media (min-width: 360px) {
+    color: blue;
+  }
+}
+
+header{
+    nav{
+      @media screen and (min-width: 360px) {
+        display: none;
+      }
+    }
+  }
+
+  .page-main {
+    &.content-m-text {
+      @media screen and (min-width: 360px) {
+        display: none;
+      }
+    }
+  }
+
+
+  .page-completed-project{
+
+    &.pagination{
+      @media screen and (min-width: 360px) {
+        display: none;
+      }
+    }
+  }
+
+  .types-of-repair {
+    &.advantages {
+      @media screen and (min-width: 360px) {
+        display: none;
+      }
+    }
+  }
+
