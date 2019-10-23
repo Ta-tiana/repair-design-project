@@ -1963,7 +1963,7 @@ $full-max: 1439.98px;
     screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
       @include flex($align: space-evenly, $justify: center, $direction: column, $align-content: flex-start);
       @include size(100%, 100%); margin: -4px 0 12% 0;
-      padding: 0 5%;
+
     }
 
     @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
@@ -2457,6 +2457,7 @@ $full-max: 1439.98px;
   .form-repair {
 
     &__input-text2 {
+      color: $bg-bright;
       @include size($width: 249%);
       @include input($b-size: 1px, $b-type: solid, $b-color: rgba(255, 255, 255, 0.15));
       @include padding($p-top: 6px, $p-bottom: 7px);
