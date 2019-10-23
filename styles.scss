@@ -1,3 +1,50 @@
+/* base */
+
+//------------------------------------
+
+//- Fonts
+@font-face {
+  font-family: 'FuturaDemiC';
+  src: url('assets/fonts/FuturaDemiC.woff2') format('woff2'),
+  url('assets/fonts/FuturaDemiC.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaBookC';
+  src: url('assets/fonts/FuturaBookC.woff2') format('woff2'),
+  url('assets/fonts/FuturaBookC.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaMediumC';
+  src: url('assets/fonts/FuturaMediumC.woff2') format('woff2'),
+  url('assets/fonts/FuturaMediumC.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('assets/fonts/ProximaNova-Regular.woff2') format('woff2'),
+  url('assets/fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Yeseva One';
+  src: url('./assets/fonts/YesevaOne.woff2') format('woff2'),
+  url('./assets/fonts/YesevaOne.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//- reset
+//------------------------------------
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -12,45 +59,3733 @@ html {
   box-sizing: inherit;
 }
 
-.foo {
-  color: red;
+a,
+iframe,
+img,
 
-  @media (min-width: 360px) {
-    color: blue;
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus::-webkit-input-placeholder {
+  color: transparent
+}
+
+:focus::-moz-placeholder {
+  color: transparent
+}
+
+:focus:-moz-placeholder {
+  color: transparent
+}
+
+:focus:-ms-input-placeholder {
+  color: transparent
+}
+
+
+/* abstracts*/
+//------------------------------------
+
+// Variables
+//----------
+//color for
+$bg-bright: #FFFFFF;
+$bg-dark: #131313;
+$btn-sandy: #E3B873;
+
+//media for
+//$mobile-min: 375px;
+//$mobile-max: 474px;//475 после 475 идет копия мобилки до 768
+//
+//$tablet-min: 475px; //5+7
+//$tablet-max: 768px;
+//
+//$screen-min: 769px;
+//$screen-max: 1199px;
+//
+//$full-min: 1200px;
+//$full-max: 1440px;
+//
+//
+//$viewport-5: 575.98px;
+//$screen-min: 767.98px;
+//$viewport-9: 991.98px;
+//$full-min: 1199.98px;
+//$full-max: 1439.98px;
+
+$mobile-min: 375px;
+$mobile-max: 474px;//475 после 475 идет копия мобилки до 768
+$tablet-min: 475px; //5+7
+$viewport-5: 575.98px;
+$tablet-max: 768px;
+$screen-min: 767.98px;
+$viewport-9: 991.98px;
+$screen-max: 1199px;
+$full-min: 1199.98px;
+$full-max: 1439.98px;
+
+//-placeholders
+%bg-image {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+%button-primary {
+  box-shadow: 0 5px 15px rgba(227, 184, 115, 0.3);
+  border-radius: 2px;
+  border: 1px solid $btn-sandy;
+  background-color: $btn-sandy;
+}
+
+%button-secondary {
+  border-radius: 2px;
+  border: 1px solid #FFFFFF;
+  background: none;
+}
+
+%list-header {
+  font-family: Yeseva One, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #363636;
+  margin: 5% 0 2% 10%;
+}
+
+%list-inner {
+  font-family: FuturaBookC, Arial, serif;
+  font-size: 15px;
+  line-height: 25px;
+  color: #959595;
+  padding: 0;
+  list-style-position: inside;
+  margin: 0 0 0 9%;
+}
+
+%list-button {
+  width: 228px;
+  height: 54px;
+  font-family: Yeseva One, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: $bg-bright;
+}
+
+%list-button-mob {
+  font-family: Yeseva One, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 138.6%;
+  /* or 21px */
+  text-transform: uppercase;
+  color: $bg-bright;
+}
+
+%checkbox {
+  border: 1px solid $btn-sandy;
+  display: inline-block;
+  position: relative;
+  background-color: $btn-sandy;
+  border-radius: 2px;
+  padding: 3px;
+  top: 3.2px;
+  right: 1px;
+}
+
+%checkbox-mark {
+  content: url(assets/images/check.png);
+  position: absolute;
+  font-family: Arial, serif;
+  top: 3px;
+  left: 3.6px;
+  font-size: 10px;
+  color: $bg-bright;
+  transform: scaleX(1);
+}
+
+//-mixins
+@mixin bg-color($color) {
+  -moz-background-origin: $color;
+  -webkit-background-origin: $color;
+  background: $color;
+}
+
+@mixin nav-text($color, $size, $height) {
+  font-family: FuturaDemiC, Arial, sans-serif;
+  color: $color;
+  font-size: $size;
+  line-height: $height;
+}
+
+@mixin package($link) {
+  background: $link no-repeat top;
+  -moz-background-size: 100%; /* Firefox 3.6+ */
+  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%; /* Opera 9.6+ */
+  background-size: 100%; /* Современные браузеры */
+  //height: 434px;
+  //width: 340px;
+  height: 586px;
+  width: 392px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@mixin list($height, $width) {
+  width: $width;
+  height: $height;
+  background: $bg-bright;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+@mixin heading($color) {
+  color: $color;
+  font-family: Yeseva One, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 35px; //28px def
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+@mixin heading-mob($color) {
+  color: $color;
+  font-family: Yeseva One, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 138.6%;
+  /* or 30px */
+  text-align: center;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+@mixin size($width: none, $height: none) {
+  height: $height;
+  width: $width;
+}
+
+@mixin font($f-family, $f-size, $l-height, $color) {
+  font-family: $f-family, Arial, sans-serif;
+  font-size: $f-size;
+  line-height: $l-height;
+  color: $color;
+}
+
+
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, $wrap: nowrap, $align-content: stretch) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-content: $align-content;
+}
+
+@mixin input($b-size: 0px, $b-type: none, $b-color: transparent) {
+  outline: 0;
+  background: transparent;
+  border-bottom: $b-size $b-type $b-color;
+  border-left: 0 none transparent;
+  border-right: 0 none transparent;
+  border-top: 0 none transparent;
+}
+
+@mixin padding ($p-top: 0px, $p-right: 0px, $p-bottom: 0px, $p-left: 0px){
+  padding: $p-top $p-right $p-bottom $p-left;
+}
+
+  //@mixin puddings($padding) {
+  //  padding: $padding*2;
+
+@mixin size($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin max-size($width: none, $height: none) {
+  max-width: $width;
+  max-height: $height;
+}
+
+@mixin min-size($width: none, $height: none) {
+  min-width: $width;
+  min-height: $height;
+}
+
+@mixin position($position, $top: auto, $left: auto) {
+  position: $position;
+  top: $top;
+  left: $left;
+}
+
+@mixin fonts($font: inherit, $size: inherit, $line-height: inherit, $color: inherit, $decoration: none) {
+  font-family: $font, "Times New Roman", sans-serif;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+  text-decoration: $decoration;
+}
+
+/* placeholders */
+
+%button {
+  background: #E3B873;
+  box-shadow: 0 5px 15px rgba(225, 185, 115, 0.2);
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
-header{
-    nav{
-      @media screen and (min-width: 360px) {
-        display: none;
+%circle-button {
+  @include size(36px, 36px);
+
+  display: block;
+  border: none;
+  border-radius: 50%;
+  background: #E3B873;
+
+  &:hover {
+    border: 1px solid #131313;
+    cursor: pointer;
+  }
+
+  & > img {
+    @include size(14px, 14px);
+    margin: 0 auto;
+  }
+}
+
+%input {
+  @include fonts(FuturaBookC, 18px, 24px, #FFF);
+
+  color: #FFF;
+  border: none;
+  text-align: start;
+  background: #131313;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+
+  &::placeholder {
+    @include fonts(FuturaBookC, 18px, 24px, #FFF);
+  }
+}
+
+%label {
+  @include flex($align: flext-start, $direction: column);
+  @include fonts("FuturaBookC", 15px, 20px, rgba(255, 255, 255, 0.5));
+
+  text-align: start;
+}
+
+%logo {
+  @include flex($align: center, $direction: column);
+  @include fonts("Yeseva One", 20px, 28px, #131313);
+}
+
+%pagination {
+  @include flex(space-between);
+
+  .pagination__circle {
+    @include size(10px, 10px);
+    margin: 0 -10px 0 0;
+    border-radius: 50%;
+    background: #959595;
+
+    &_selected {
+      background: #FFFFFF;
+    }
+
+    &:hover {
+      background: $bg-bright;
+      cursor: pointer;
+    }
+  }
+
+  .pagination__arrow {
+
+    &_right {
+      transform: rotate(180deg);
+      margin: 0 -7px 0 7px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+/* variables */
+
+$background: #131313;
+
+$primary: #E3B873;
+$secondary: #FFF;
+$thirdly: #959595;
+$fourth: rgba(255, 255, 255, 0.5);
+
+$viewport-5: 575.98px;
+$screen-min: 767.98px;
+$viewport-9: 991.98px;
+$full-min: 1199.98px;
+$full-max: 1439.98px;
+
+
+.hide {
+  @include size(1px,1px);
+  @include position(absolute, -888px, -888px);
+
+  opacity: 0;
+}
+
+.custom-checkbox {
+  @include size(100%, 18px);
+  @include position(relative);
+  @include flex(center, center);
+
+  text-align: start;
+
+  &__input {
+    @include size(1px, 1px);
+    @include position(absolute, 0, 0);
+
+    opacity: 0;
+
+    &:checked + .custom-checkbox__label {
+      background-image: url("./assets/images/checked.svg");
+    }
+  }
+
+  &__label {
+    @include size(18px, 18px);
+    border-radius: 2px;
+    display: block;
+    background: $primary;
+  }
+
+  &__text {
+    @include fonts(FuturaBookC, 16px, 22px, $secondary);
+
+    display: block;
+  }
+}
+
+//------------------------------------
+//------------------------------------
+
+
+  /* layout */
+  //------------------------------------
+  .page-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+
+  .header, .footer {
+    @include bg-color($bg-dark);
+    height: 83px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include bg-color($bg-dark);
+      height: 57px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border: none;
+      justify-content: space-evenly;
+      & .button {
+        &:hover {
+          cursor: pointer;
+        }
+        @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+        screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+          display: none;
+        }
       }
     }
   }
 
-  .page-main {
-    &.content-m-text {
-      @media screen and (min-width: 360px) {
-        display: none;
-      }
+  .home {
+    @include bg-color($bg-dark);
+    height: 707px;
+    width: 100%;
+    display: flex;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include bg-color($bg-dark);
+      height: 476px;
+      width: 100%;
+      display: flex;
     }
   }
 
 
-  .page-completed-project{
-
-    &.pagination{
-      @media screen and (min-width: 360px) {
-        display: none;
-      }
+  .completed-project {
+    @include bg-color($bg-dark);
+    height: 1074px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      @include bg-color($bg-dark);
+      height: 690px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
     }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 495px;
+    }
+  }
+
+  .scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: $bg-dark;
+    height: 97px;
+    width: 247px;
+    top: -49px;
+    margin: 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none
+    }
+  }
+
+
+  .completed-project-block {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 57.19%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      display: flex;
+      justify-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      padding-top: 15px;
+      display: flex;
+      justify-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      flex-direction: column;
+    }
+  }
+
+
+  .online-control {
+    @include bg-color($bg-bright);
+    height: 773px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      @include bg-color($bg-dark);
+      height: 863px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      min-width: 74.74%;
+      @include bg-color($bg-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 900px;
+    }
+  }
+
+
+  .online-control-block {
+    width: 56.74%;
+    height: 1000px;
+    position: relative;
+    bottom: 227px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      position: relative;
+      @include size(100%, 100%);
+      bottom: 0;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max){
+      @include size(100%, 100%);
+      bottom: -47px;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+       width: 78%;
+    }
+
   }
 
   .types-of-repair {
-    &.advantages {
-      @media screen and (min-width: 360px) {
+    @include bg-color($bg-bright);
+    //height: 2030px;
+     height: 1804px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      height: 1686px;
+    }
+  }
+
+  .footer {
+    @include bg-color($bg-dark);
+    height: 133px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include bg-color($bg-dark);
+      height: 133px;
+    }
+  }
+
+
+  /*section*/
+  //---------
+
+  //header
+  //------------------------------------
+  .nav {
+    width: 41%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      display: none;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+  .nav__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 2px;
+    margin: 0;
+  }
+
+  .nav__item {
+    list-style: none;
+  }
+
+  .call-request {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+
+    & .button {
+      padding-right: 11%;
+
+      &:hover {
+        cursor: pointer;
+      }
+      @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+        padding-right: 0;
+      }
+    }
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      width: 36%;
+      justify-content: flex-end;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max){
+      width:50%;
+      margin-right: 5.5%;
+      @include flex($justify: flex-end,$align:center);
+
+    }
+  }
+
+
+
+  .header .call-request {
+    & .button {
+      padding-right: 11%;
+      @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+        padding-right: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__tel {
+      padding: 0 0 0 28px;
+
+      @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+        padding: 0 34px 0 12px;
+      }
+
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      @include flex($justify: flex-start, $align:center);
+      width: 50%;
+      margin-left: 5.5%;
+    }
+  }
+
+
+  .logo__span {
+    @include nav-text($btn-sandy, 14px, 16px);
+    text-transform: uppercase;
+    padding-right: 10px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include nav-text($btn-sandy, 12px, 14px);
+    }
+
+  }
+
+  .nav__a {
+    @include nav-text($bg-bright, 14px, 16px);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav__a_selected {
+    @include nav-text($btn-sandy, 14px, 16px);
+    text-decoration: none;
+  }
+
+  .nav__a:hover {
+    text-decoration: none;
+    color: $btn-sandy;
+  }
+
+  .nav__item {
+    @include nav-text($bg-bright, 14px, 16px);
+    text-transform: uppercase;
+  }
+
+  .call-request__tel {
+    @include nav-text($btn-sandy, 14px, 16px);
+    text-align: right;
+    text-decoration-line: underline;
+    padding: 0 0 0 12px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      @include nav-text($bg-bright, 12px, 14px);
+      text-decoration: $bg-bright;
+      text-decoration-line: none;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding-left: 0;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @include nav-text($bg-bright, 12px, 14px);
+    text-decoration: $bg-bright;
+    text-decoration-line: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-left: 0;
+  }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      padding: 0 34px 0 12px;
+    }
+
+  }
+
+
+  .button__request {
+    @include nav-text($bg-bright, 13px, 15px);
+    text-align: center;
+    text-transform: uppercase;
+    color: $bg-bright;
+    &:hover {
+      cursor: pointer;
+    }
+    @extend %button-primary;
+    height: 37px;
+    width: 161px;
+  }
+
+
+
+  //home
+  //------------------------------------
+  .introduction {
+    @extend %bg-image;
+    background-image: url("assets/images/home.png"),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.7) 3.47%, rgba(0, 0, 0, 0.7) 100%);
+    background-blend-mode: multiply;
+    width: 94.17%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      background-image: url("assets/images/home-mob.png"),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.7) 3.47%, rgba(0, 0, 0, 0.7) 100%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-content: flex-start;
+      justify-content: center;
+    }
+  }
+
+  .instagram {
+    display: flex;
+    width: 5.82%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 164px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .instagram__text {
+    font-family: FuturaDemiC, "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    transform: rotate(90deg);
+    color: #E3B873;
+    text-transform: uppercase;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .instagram__text:before {
+    position: absolute;
+    left: 119.85%;
+    top: 37.51%;
+    bottom: 94.99%;
+    content: "";
+    width: 51px;
+    height: 0.5px;
+    transform: rotate(-180deg);
+    background: $btn-sandy;
+  }
+
+
+  .headnote-intro {
+    height: 50%;
+    width: 40%;
+    flex-direction: column;
+    margin-left: 4.4%;
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      height: 100%;
+      width: 90%;
+      flex-direction: column;
+      margin: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 100%;
+      width: 68%;
+      flex-direction: column;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      width: 57%;
+    }
+  }
+
+
+  .button-intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-family: FuturaDemiC, "Trebuchet MS", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    margin: 21px 0 15px 0;
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      line-height: 15px;
+      text-align: center;
+      width: 100%;
+      height: 47%;
+      margin: 0;
+    }
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      line-height: 15px;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      height: 34%;
+    }
+  }
+
+
+  .headnote-intro__header {
+    font-family: Yeseva One, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 53px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      margin: 0;
+      font-size: 23px;
+      line-height: 132.83%;
+      /* or 31px */
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      margin: 0;
+      font-size: 23px;
+      line-height: 132.83%;
+      text-align: center;
+    }
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      width: 600px;
+    }
+
+  }
+
+  .headnote-intro__span {
+    color: $btn-sandy;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      color: $btn-sandy;
+    }
+  }
+
+  .headnote-intro__text {
+    font-family: FuturaBookC, Arial, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin: 16px 0 24px 0;
+    width: 85%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      font-size: 18px;
+      line-height: 135.84%;
+      margin: 14px 0 -2px 0;
+      width: 85%;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      font-size: 18px;
+      line-height: 135.84%;
+      margin: 14px 0 -2px 0;
+      text-align: center;
+    }
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      width: 500px;
+    }
+  }
+
+  .br {
+    display: flex;
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+     display: none;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+
+  }
+
+
+  .button-intro__calculate {
+    @extend %button-primary;
+    width: 207px;
+    height: 51px;
+    margin-right: 10px;
+    color: $bg-bright;
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      width: 338.61px;
+      height: 51px;
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
+  }
+
+
+  .button-intro__submit {
+    @extend %button-secondary;
+    width: 207px;
+    height: 51px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      width: 338.61px;
+      height: 51px;
+      margin: 0 0 28px 0;
+    }
+  }
+
+  .button-intro__submit-span {
+    display: inline-block;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  //completed project
+  .headnote-completed {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      display: flex;
+      width: 100%;
+      height: 70%;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+
+  .scroll__span {
+    display: flex;
+    font-family: Yeseva One, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-right: 20px;
+  }
+
+  .details-completed {
+    width: 42%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2% 0 3.5%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 100%;
+      height: 38%;
+      margin: 0;
+      order: 3;
+    }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max){
+    display: none;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    display: none;
+  }
+
+  }
+
+  .headnote-completed-mob {
+    display: none;
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: column;
+      order: 1;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max){
+      display: flex;
+      max-width:80%;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: flex;
+      max-width:80%;
+      flex-direction: column;
+      order: 1;
+      padding-bottom: 50px;
+    }
+
+  }
+
+  .headnote-completed__header {
+    color: $btn-sandy;
+    font-family: Yeseva One, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 37px;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    position: relative;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .headnote-completed__header-mob {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include heading-mob($btn-sandy);
+      margin: 34px 0 25px 0;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: flex;
+      @include heading-mob($btn-sandy);
+      //margin: 34px 0 25px 0;
+      margin: -17px 0 25px 0;
+      justify-content: center;
+    }
+  }
+
+  .br-screen{
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+  .headnote-completed__header:after {
+    position: absolute;
+    top: 55px;
+    left: 165px;
+    content: "";
+    width: 92px;
+    height: 1px;
+    background: $btn-sandy;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .headnote-completed__text {
+    color: #FFFFFF;
+    font-family: FuturaBookC, Arial, serif;
+    font-size: 18px;
+    line-height: 29px;
+    margin-top: -4px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+  .headnote-completed__text-mob {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 38px 0;
+      padding: 0 32px;
+      font-size: 14px;
+      line-height: 158.48%;
+      /* or 22px */
+      text-align: center;
+      color: $bg-bright;
+      font-family: FuturaBookC, Arial, sans-serif;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 38px 0;
+      padding: 0 60px;
+      text-align: center;
+      @include font(FuturaBookC, 14px, 158.48%, $bg-bright);
+    }
+  }
+
+  .list-completed {
+    width: 88%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 32px 0 32px 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 172px;
+      /* height: 200px; */
+      margin: 0;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 172px;
+      width: 55%;
+    }
+
+  }
+
+
+  .list-completed__inner1 {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      width: 43%;
+      padding-left: 2.5%;
+      margin: 0;
+    }
+  }
+
+  .list-completed__inner2 {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      justify-content: space-between;
+      width: 50%;
+      margin: 0;
+    }
+  }
+
+  .list-completed__li {
+    list-style: none;
+    padding: 0;
+    margin: -12px 0 37px 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      list-style: none;
+      padding: 0;
+      margin: 5px 0 23px 0;
+    }
+  }
+
+  .list-completed__header {
+    color: $btn-sandy;
+    font-family: Yeseva One, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: uppercase;
+    display: flex;
+    align-content: center;
+    margin: 13px 0 4px 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      font-size: 14px;
+      line-height: 138.6%;
+      margin: 0 0 10px 0;;
+    }
+  }
+
+  .list-completed__span {
+    color: #FFFFFF;
+    font-family: FuturaBookC, Arial, serif;
+    font-size: 15px;
+    line-height: 20px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+
+  .pagination-completed {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 0 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .list-completed-spot {
+    list-style: none;
+    display: flex;
+    padding: 0 22px;
+    margin: 0;
+  }
+
+  .list-completed-spot__a:hover {
+    background-image: url("assets/images/white-spot.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .list-completed-spot__li {
+    margin: 0 8px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      margin: 0 8px;
+    }
+  }
+
+  .img-arrow-right__svg {
+    transform: rotate(-180deg);
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .nav-completed {
+    display: flex;
+    height: 11%;
+    width: 100%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+  .nav-completed__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    font-family: Yeseva One, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin: 10px 0 0 0;
+    padding: 0;
+  }
+
+  .nav-completed__item {
+    list-style: none;
+    margin-right: 60px;
+  }
+
+  .nav-completed__a {
+    text-decoration: $btn-sandy;
+    color: rgba(255, 255, 255, 0.3)
+  }
+
+  .nav-completed__a_selected {
+    text-decoration: none;
+    padding-bottom: 5px;
+    border-bottom: 1px $btn-sandy solid;
+    color: $btn-sandy;
+  }
+
+  .nav-completed__a:hover {
+    text-decoration: none;
+    padding-bottom: 5px;
+    border-bottom: 1px $btn-sandy solid;
+    color: $btn-sandy;
+  }
+
+  .slider-completed {
+    display: flex;
+    flex-direction: column;
+    width: 59.8%;
+    height: 100%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 45%;
+      order: 2;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      order: 2;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      order: 2;
+      width: 78%;
+      height: auto;
+    }
+
+  }
+
+  .slider-construct-completed {
+    display: flex;
+    flex-direction: row;
+    height: 82.82%;
+    width: 100%;
+    position: relative;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      padding: 0 5%;
+    }
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 80%;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+
+      height: 82.82%;
+    }
+  }
+
+.video-control {
+  max-width: 848px;
+}
+
+  .image-completed {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    flex-wrap: nowrap;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      align-items: center;
+      flex-wrap: nowrap;
+      position: relative;
+
+    }
+  }
+
+  .image-completed__img-mob {
+    display: none;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      height: 100%;
+    }
+  }
+
+  .image-completed__img1 {
+    height: auto;
+    width: 92.63%;
+    margin-right: 10px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .image-completed__img2 {
+    height: auto;
+    //height: 100%;
+    width: 92.63%;
+    margin-left: 10px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 100%;
+      //height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .button-completed {
+    position: absolute;
+    top: 218px;
+    right: 46px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      width: 100%;
+      top: 42%;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 33px;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      width: 100%;
+      top: 41%;
+      right: 1%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 33px;
+    }
+  }
+
+  .button-completed__play1 {
+    @extend %button-primary;
+    border-radius: 45%;
+    height: 54.72px;
+    width: 54.72px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .button-completed__play1-mob {
+    display: none;
+    @extend %button-primary;
+    border-radius: 45%;
+    height: 36px;
+    width: 36px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      //left: 1%;
+      //top: 1%;
+      position: relative;
+    }
+  }
+
+
+  .button-completed__play2-mob {
+    display: none;
+    @extend %button-primary;
+    border-radius: 45%;
+    height: 36px;
+    width: 36px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: flex;
+      //left: 1%;
+      //top: 1%;
+      position: relative;
+    }
+  }
+
+
+  //online-control
+  //------------------------------------
+  .heading-control__header {
+    @include heading($bg-bright);
+    width: 100%;
+    letter-spacing: -0.007em;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      font-size: 22px;
+    }
+  }
+
+  .heading-control {
+    @include flex(center, center, column, nowrap);
+    @include size(100%, 11%);
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include size(100%, 17%);
+      justify-content: flex-start;
+      padding: 31px 0 0 0;
+    }
+  }
+
+  .heading-control__img-camera {
+    //margin: 5px 0 20px 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      padding-top: 5px;
+    }
+  }
+
+  .slider-construct-control:after {
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    content: "";
+    width: 6.73%;
+    height: 1.54px;
+    background: $btn-sandy;
+    transform: translate3d(-50%, -50%, 0);
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      position: absolute;
+      bottom: -17%;
+      left: 50%;
+      content: "";
+      width: 14.55%;
+      height: 1.54px;
+      background: $btn-sandy;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .slider-construct-control {
+    height: 43.5%;
+    bottom: 300px;
+    position: relative;
+    top: 5px;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max){
+      padding: 0 20px;
+      height: 23.5%;
+    }
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      max-height: 80%;
+      max-width: 70%;
+      margin:0 auto;
+      height: 32.5%;
+    }
+    & .button-control {
+      display: none;
+    }
+  }
+
+  .button-control__svg {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      position: absolute;
+      height: 12.19px;
+      width: 12.19px;
+      left: 14px;
+      top: 12px;
+    }
+  }
+  .button-control__play2 {
+    @extend %button-primary;
+    border-radius: 45%;
+    height: 85px;
+    width: 85px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @extend %button-primary;
+      border-radius: 45%;
+      height: 37px;
+      width: 37px;
+    }
+  }
+
+  .button-completed__svg-mob1 {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      position: absolute;
+      left: 25%;
+      top: 24%;
+      transform: rotate(180deg);
+    }
+  }
+
+  .button-completed__svg-mob2 {
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      position: absolute;
+      left: 35%;
+      top: 24%;
+    }
+  }
+
+  .video-control {
+    max-width: 817px;
+    max-height: 434px;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      //object-fit: fill;
+      height: 100%;
+      width: 100%;
+      max-height: none;
+      max-width: none;
+    }
+  }
+
+  .details-control {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 52%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      padding-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 64%;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 42%;
+    }
+  }
+
+  .details-control__text {
+    font-family: FuturaBookC, Arial, serif;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: center;
+    padding: 31px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+      font-size: 14px;
+      line-height: 169.8%;
+      /* or 24px */
+      width: 90%;
+      //margin: 50px 0 20px 0;
+      padding: 0;
+      color: $bg-bright;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max){
+      display: none;
+    }
+  }
+
+  //@mixin font($f-family, $f-size, $l-height, $color){
+  //  font-family:$f-family, Arial, sans-serif;
+  //  font-size: $f-size;
+  //  line-height:$l-height;
+  //  color: $color;
+  //}
+  //
+  //@mixin flex($a-item, $j-content, $f-direction,$f-wrap){
+  //  display:flex;
+  //  align-items: $a-item;
+  //  justify-content: $j-content;
+  //  flex-direction: $f-direction;
+  //  flex-wrap: $f-wrap;
+  //}
+
+
+  .details-control > .form-control { // ищет на 1 уровень ниже
+    @include flex($direction: row, $wrap: nowrap);
+    @include size(100%, 200px);
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include flex($align: center, $justify: space-evenly, $direction: column, $wrap: nowrap);
+      @include size($height: 55%);
+    }
+  }
+
+  .form-control .button-control {
+    @include flex($justify: center);
+    @include size($width: 30%);
+    padding: 45px 14px 0 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include flex($align: center, $justify: center);
+      @include size($width: 100%);
+      position: relative;
+      padding: 45px 0 0 0;
+    }
+
+    &__submit {
+      @extend %button-primary;
+      @include size(200px, 51px);
+      @include font(FuturaDemiC, 15px, 26px, $bg-bright);
+      text-align: center;
+      text-transform: uppercase;
+      &:hover {
+        cursor: pointer;
+      }
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include size(340px, 51px);
+        position: absolute;
+        top: 13px;
+      }
+    }
+  }
+
+  .form-control__inner {
+    @include flex($align-content: space-evenly, $justify: center, $direction: column);
+    @include size(75%, 200px);
+    //margin: 0;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include flex($align: space-evenly, $justify: center, $direction: column, $align-content: flex-start);
+      @include size(100%, 100%); margin: -4px 0 12% 0;
+      padding: 0 5%;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      flex-wrap: nowrap;
+      margin: -4px 0 12% 0;
+      padding: 0 5%;
+    }
+
+
+    @media screen and (min-width: $full-min) and (max-width: $full-max) {
+      flex-wrap: nowrap;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  .form-control {
+
+    &__input-text1 {
+      @include size($width: 233px);
+      @include input($b-size: 1px, $b-type: solid, $b-color: rgba(54, 54, 54, 0.3));
+      @include padding($p-bottom: 10px);
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include flex($align-content: flex-end, $direction: column);
+        @include size($width: 338px);
+        @include input($b-size: 1.5px, $b-type: solid, $b-color: rgba(255, 255, 255, 0.5));
+        @include padding($p-bottom: 10px);
+      }
+        &[type="text"]::-webkit-input-placeholder {
+        @include font(FuturaBookC, 18px, 24px, #363636);
+          @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+          screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+          @include font(FuturaBookC, 18px, 138.72%, $bg-bright);
+        }
+      }
+    }
+
+    &__p-text1 {
+      @include flex($justify: space-around);
+      flex-wrap: wrap;
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include flex($align: center, $justify: space-evenly, $direction: column);
+        margin: 0;
+        flex-wrap: nowrap;
+      }
+    }
+
+    &__label-text1 {
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include size($width: 100%);
+        @include flex($align: flex-end);
+        padding-bottom: 3px;
+      }
+    }
+
+    &__span-text1 {//gray
+      @include size($width: 220px);
+      height: auto;
+      margin: 0 49px 0 -1px;
+      padding: 26px 0 0 13px;
+
+      @include font(FuturaBookC, 15px, 20px, rgba(54, 54, 54, 0.5));
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include flex($align-content: center, $justify: center, $direction: column);
+        @include size(100%, 50%);
+        color: rgba(255, 255, 255, 0.5);
+        //@include size($width: 40%);
+        margin: 27px 0;
+        padding:0;
+      }
+    }
+  }
+
+
+  .form-num-mob1 {
+    display: none;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: inline-block;
+    }
+  }
+  .form-num1 {
+    display: inline-block;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+
+  .form-control {
+
+    &__p-check1 {
+      @include flex($align: center, $justify: flex-end);
+      padding: 0 32px 34px 0;
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include flex($align: center, $justify: center);
+        @include font(FuturaBookC, 16px, 22px, $bg-bright);
+        margin: 0;
+        padding:0;
+      }
+    }
+
+    &__label-check1 {
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include flex($align-content: center);
+        @include size($width: 100%);
+        padding-left: 10px;
+        color: $bg-bright;
+      }
+    }
+
+    &__input-check1 {
+      display: none; /* <--скрываем дефолтный чекбокс */
+    }
+
+    &__span-check1 { /* <-- стилизируем новый */
+      @include size(18px, 18px);
+      @extend %checkbox;
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        top: 0;
+        right: 10px;
+      }
+    }
+  }
+
+  [type=checkbox]:checked + .form-control__span-check1:before { /* <-- ставим иконку, когда чекбокс включен  */
+    @extend %checkbox-mark;
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      top: -1.7px;
+    }
+  }
+
+
+  //types of repair
+  //------------------------------------
+  .types-of-repair-block1 {
+    height: 860px;
+    //h = 43.86%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      flex-direction: column;
+      height: 1980px;
+    }
+
+  }
+
+
+  .packages-repair {
+    width: 88%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      flex-direction: column;
+      //height:  1570px;
+      height: 1551px;
+      width: 90%;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .heading-repair {
+    height: 104px;
+    width: 100%;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      height: 195px;
+      padding: 50px 3px 0 0 ;
+    }
+  }
+
+  .heading-repair__header {
+    @include heading($bg-dark);
+    margin: 0 0 11px 0;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      @include heading-mob($bg-dark);
+      letter-spacing: 0;
+      margin: 30px 0 0 0;
+    }
+  }
+
+  .heading-repair__hammer {
+    margin: 5px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      margin: 16px 0 18px 0;
+    }
+  }
+
+
+  .package-repair {
+
+    &:first-child {
+      @include package(url(assets/images/repair-package11.png));
+        margin: 0 5px;
+    }
+
+    &:nth-child(2) {
+      @include package(url(assets/images/repair-package22.png));
+      margin: 0 5px;
+    }
+
+    &:last-child {
+      @include package(url(assets/images/repair-package33.png));
+      margin: 0 5px;
+
+    }
+
+    &:nth-child(1n + 1) {
+      //каждый 1й этемент начиная с 1го
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @include size(100%, 464px);
+        justify-content: flex-start;
+        max-width: 450px;
+      }
+    }
+  }
+
+  .list-repair {
+    @include list(293px, 330px);
+
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      width: 270px;
+      height: 241px;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      width: 84.18%;
+      height: 50%;
+      min-width: 228px;
+    }
+
+    &__header {
+      @extend %list-header;
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        font-size: 15px;
+        line-height: 138.6%;
+        margin: 7% 0 2% 11%;
+      }
+    }
+
+    &__inner {
+      @extend %list-inner;
+      margin: 0 0 0 14%;
+      //margin: 0 0 0 14%;
+      @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+      screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+        font-size: 13px;
+        line-height: 172.8%;
+        margin: 0 0 0 16%;
+      }
+    }
+
+    &__li {
+      position: relative;
+      &:before{
+        content: "";
+        height: 4px;
+        width: 4px;
+        background:#959595;
+        position: absolute;
+        border-radius: 100%;
+        top: 10px;
+        left: -12px;
+        @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+        screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+          left: -10px;
+        }
+
+      }
+    }
+  }
+
+  .button-repair {
+    position: relative;
+    width: 100%;
+    height: 54px;
+  }
+
+  .button-repair__btn { //900
+    @extend %button-primary;
+    @extend %list-button;
+    position: absolute;
+    top: 30px;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+    screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      position: absolute;
+      top: 22px;
+      width: 191px;
+      height: 40px;
+      //@extend %list-button-mob;
+      font-family: Yeseva One, Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 138.6%;
+      /* or 21px */
+      text-transform: uppercase;
+      color: $bg-bright;
+    }
+  }
+
+.types-of-repair-block2 {
+  flex-direction: row;
+  @include size(100%,  726px);
+  @include flex($align: center, $wrap: nowrap);
+  @media screen and (min-width: $mobile-min) and (max-width: $mobile-max),
+  screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    flex-direction: column;
+    display: none;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    justify-content: center;
+    align-items: center;
+
+  }
+}
+
+
+  .advantages{
+    @include size(58%, 100%);
+    background: url(assets/images/measurement.png) no-repeat left top -25px;
+    @include flex( $justify: flex-end);
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+  .round {
+    @include size( 78.5%, 88%);
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid $btn-sandy;
+    position: absolute;
+    top: 4%;
+    left: -21%;
+  }
+
+.list1-repair{
+  @include flex( $justify: space-around, $align: center, $direction:column);
+  @include size(84%, 87%);
+  @include padding($p-top: 38px);
+  position: absolute;
+}
+
+  .list1-repair__li{
+    @include flex( $align: center, $direction:row);
+    @include font( $f-family: FuturaMediumC, $f-size: 18px, $l-height: 21px, $color: $bg-dark);
+    list-style: none;
+
+  }
+
+.list1-repair__li1 {
+  @include padding($p-top: 3px, $p-right: 56px);
+  margin: 1px -40.7% 0 0;
+  width: 60%;
+}
+.list1-repair__li2{
+  @include padding($p-bottom: 51px);
+  margin: 0 -25% 0 0;
+  width: 40%;
+}
+.list1-repair__li3{
+  @include padding($p-top: 2px, $p-bottom: 51px);
+  margin: 0 -32% 0 0;
+  width: 40%;
+}
+.list1-repair__li4{
+  @include padding($p-bottom: 50px);
+  margin: 0 -24% 0 0;
+  width: 50%;
+}
+
+  .list1-repair__circle {
+    @include size(41.76px, 41.76px);
+    @include font( $f-family: YesevaOne, $f-size: 18px, $l-height: 25px, $color: $bg-bright);
+    @include flex( $justify: center, $align: center);
+    text-align: center;
+    background: $btn-sandy;
+    box-shadow: 0 0 0 10px $bg-bright;
+    border-radius: 50%;
+  }
+
+.list1-repair__circle1 {
+  margin: 0 16px 0 0;
+  @include padding($p-top: 4px, $p-left: 5px);
+  position: absolute;
+  top: 12.2%;
+  right: 60%;
+}
+
+.list1-repair__circle2 {
+  margin: 7px 17px 0 1px;
+  @include padding($p-top: 2px);
+}
+.list1-repair__circle3 {
+  margin: 0 15px 0 0;
+  @include padding($p-top: 6px);
+}
+.list1-repair__circle4 {
+  margin: 3px 13px 0 0;
+  @include padding($p-top: 5px);
+}
+
+
+.measurement {
+  @include size(42%, 100%);
+  @include flex($align: flex-start, $justify: center, $direction: column);
+  @include padding($p-top:80px);
+
+  @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+    display: none;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    padding: 0;
+    width:90%;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+.form-repair__header{
+  @include font( $f-family: FuturaDemiC, $f-size: 20px, $l-height: 25px, $color: $bg-bright);
+  text-align: center;
+  margin: 18px 0 10px 0;
+}
+
+.measurement > .form-repair { // ищет на 1 уровень ниже
+  @include flex($align: center, $justify: space-around, $direction: column);
+  @include size(83.6%, 78.9%);
+  background: $bg-dark;
+  }
+
+  .form-repair .button-repair {
+    @include flex($justify: flex-end);
+    @include padding($p-top: 4px, $p-right: 50px);
+    @include size(100%, 15%);
+
+    &__measurer {
+      @extend %button-primary;
+      @include size(213px, 51px);
+      @include font(FuturaDemiC, 13px, 18px, $bg-bright);
+      text-align: center;
+      text-transform: uppercase;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .form-repair__inner {
+    @include flex($align-content: space-evenly, $justify: center, $direction: column);
+    @include size(81%, 63%);
+    margin: 0;
+  }
+
+
+  .form-repair {
+
+    &__input-text2 {
+      @include size($width: 249%);
+      @include input($b-size: 1px, $b-type: solid, $b-color: rgba(255, 255, 255, 0.15));
+      @include padding($p-top: 6px, $p-bottom: 7px);
+
+      &[type="text"]::-webkit-input-placeholder {
+        @include font(FuturaMediumC, 18px, 25px, $bg-bright);
+      }
+    }
+
+    &__p-text2 {
+      @include flex($align-content: center, $justify: space-between, $direction:column);
+      @include size($height: 250px);
+      @include padding($p-bottom: 7px);
+      margin: 6px 0;
+    }
+
+    &__span-text2 { //gray
+      @include size($width: 40%);
+      @include font(FuturaBookC, 15px, 18px, rgba(255, 255, 255, 0.5));
+    }
+  }
+
+  .form-num-mob2 {
+    display: none;
+  }
+  .form-num2 {
+    display: inline-block;
+  }
+
+  .form-repair {
+
+    &__p-check2 {
+      @include font(FuturaBookC, 16px, 22px, $bg-bright);
+      @include flex($align: center, $justify: flex-start);
+      @include padding($p-right: 20px, $p-bottom: 9px);
+      margin: 0;
+    }
+
+    &__input-check2 {
+      display: none; /* <--скрываем дефолтный чекбокс */
+    }
+
+    &__span-check2 { /* <-- стилизируем новый */
+      @include size(18px, 18px);
+      @extend %checkbox;
+      margin-right: 5px;
+    }
+  }
+
+  [type=checkbox]:checked + .form-repair__span-check2:before { /* <-- ставим иконку, когда чекбокс включен  */
+    @extend %checkbox-mark;
+    top:-1px;
+  }
+
+
+.sale-repair {
+  @include size(auto, 133.06px);
+  @include flex($align: center, $justify: flex-start,
+  $align-content: center, $direction: row);
+  @include padding($p-top: 14px, $p-left: 31px);
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    width: 83.7%;
+  }
+}
+
+
+.sale-repair__img-pig{
+  @include size(73px, 73px);
+  background: url(assets/images/pig.png) no-repeat top -10px right -20px;
+  margin: 0 24px 0 0;
+  }
+
+  .sale-repair__text{
+    @include font(FuturaDemiC, 20px, 25px, $btn-sandy);
+    text-shadow: 0 3px 10px rgba(227, 184, 115, 0.15)
+  }
+
+
+//--------------------------------------------
+
+
+/* REPAIR-VARIANTS */
+
+.repair-variants {
+  @include size(100%, 864px);
+  @include flex();
+  margin: 0;
+
+  background-image: url("./assets/images/repair-variants-background.png");
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    padding: 30px 0 0 0;
+  }
+
+  @media (max-width: $screen-min) {
+    @include size(375px, 227px);
+    @include flex($direction: column);
+
+    margin: 0 auto;
+    background: none;
+  }
+}
+
+.repair-variants-carousel-controls {
+  @include size(40.8%, 100%);
+
+  //padding-top: 135px;
+  padding-top: 108px;
+  padding-left: 100px;
+
+  @media (max-width: $screen-min) {
+    @include size(100%);
+    padding: 0;
+    margin: -8px 0 -23px 0;
+    //padding: 53px 0 0 0;
+    text-align: center;
+  }
+
+  &__header {
+    @include fonts("Yeseva One", 27px, 37px, $primary);
+
+    //padding-bottom: 37px;
+    padding-bottom: 10px;
+    @media  (min-width: $screen-min) and (max-width: $viewport-9) {
+      display: none;
+    }
+
+    @media (max-width: $viewport-9) {
+      @include fonts("Yeseva One", 22px, 30px, $primary);
+
+      padding: 0;
+    }
+  }
+}
+
+.repair-variants-list {
+  @include size(100%, 525px);
+  @include flex(space-between, flex-start, column);
+  padding: 0;
+  @media (max-width: $screen-min) {
+    display: none;
+  }
+
+  &__item {
+    @include fonts("Proxima Nova", 20px, 34px, $secondary);
+
+    &_selected {
+      color: $primary;
+      border-bottom: 1px solid $primary;
+    }
+  }
+}
+
+.repair-variants-carousel {
+  @include size(59.2%, 100%);
+  @include position(relative);
+  @include flex($justify: space-between, $wrap: wrap);
+
+  padding: 0 100px 0 0;
+
+  @media (max-width: $viewport-9) {
+    @include size(100%, none);
+
+    padding: 0 17px;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    padding: 0 7% 0 10%;
+  }
+
+  &__item {
+    overflow: hidden;
+
+    @media (min-width: $viewport-5) and (max-width: $full-max) {
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        opacity: 0;
+      }
+
+      &:nth-child(4) {
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: $viewport-5) and (max-width: $viewport-9) {
+      @include flex(center, center);
+    }
+
+    &:first-child {
+      @include size(353px, 556px);
+      @include position(relative, -40px, 1px);
+
+      //@media (min-width: $viewport-5) and (max-width: $full-max) {
+      //  @include position(relative, 140px, 50px);
+      //}
+
+      @media (min-width: $viewport-5) and (max-width: $full-max) {
+        //@include position(relative, 140px, 50px);
+        width: 100%;
+        height: 112%;
+      }
+
+      @media (max-width: $viewport-9) {
+        @include size(100%);
+        @include position(relative, 32px, 0);
+      }
+
+      @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+        height: 87%;
+      }
+
+      & .repair-variants-carousel__image {
+        @include size(initial, 100%);
+
+        transform: translateX(-27.3%);
+
+        @media (max-width: $viewport-9) {
+          @include size(100%);
+
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      @include position(relative, -113px, 0);
+
+      @media (max-width: $viewport-9) {
+        display: none;
+      }
+    }
+
+    &:nth-child(3) {
+      @include position(relative, -1px, 1px);
+
+      @media (max-width: $viewport-9) {
+        display: none;
+      }
+    }
+
+    &:nth-child(4) {
+      @include position(relative, -357px, 0);
+
+      @media (max-width: $viewport-9) {
         display: none;
       }
     }
   }
+
+  &__left-button {
+    @extend %circle-button;
+
+    @include position(absolute, calc(50% + 18px), 32px);
+
+    transform: rotate(180deg);
+
+    @media (min-width: $viewport-9) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+
+  &__right-button {
+    @extend %circle-button;
+
+    @include position(absolute, calc(50% + 18px), calc(100% - 68px));
+
+    @media (min-width: $viewport-9) {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      display: none;
+    }
+  }
+}
+
+/* DESIGN-PROJECT */
+
+.design-project {
+
+}
+
+/* TYPES-OF-DESIGN */
+
+.types-of-design {
+  @include size(100%, 621px);
+
+  padding-top: 110px;
+
+  @media (max-width: $full-min) {
+    @include size(100%, 1888px);
+
+    padding-top: 130px;
+    background: $background;
+  }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    height: 1973px;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    padding: 68px 0 0 0;
+    height: 1876px;
+  }
+
+  @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+    height: 1889px;
+  }
+
+}
+
+.types-of-design-heading {
+  @extend %logo;
+
+  @include flex(center, center, column);
+  padding-top: 46px;
+  //padding-top: 41px;
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    padding-top: 100px;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    padding: 0;
+  }
+
+  &__header {
+    @include fonts("YesevaOne", 20px, 28px, $background);
+    padding-top: 16px;
+    margin: -23px 0 13px 0;
+
+    @media (max-width: $full-min) {
+      @include fonts("Yeseva One", 22px, 30px, $secondary);
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      margin: -23px 0 20px 0;
+    }
+  }
+
+  &__text {
+    @include fonts(FuturaBookC, 20px, 27px, $background);
+    padding: 0;
+    text-align: center;
+    margin: 19px 0 0 0;
+
+
+    @media (max-width: $full-min) {
+      @include fonts(FuturaBookC, 15px, 20px, $secondary);
+      padding: 0 44px 40px 44px;
+
+    }
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      @include fonts(FuturaBookC, 15px, 20px, $secondary);
+      padding: 6px 44px 60px 44px;
+    }
+  }
+}
+
+.types-of-design-packages {
+  @include max-size(1236px, 608px);
+  @include size(100%, 100%);
+  @include flex(space-between);
+
+  margin: 48px auto 0 auto;
+
+  @media (max-width: $full-min) {
+    @include max-size(340px, 1507px);
+    @include flex(space-between, center, column);
+
+    margin: 0 auto;
+  }
+}
+
+.types-of-design-package {
+  @include size(84%);
+  //@include position(relative, 295px);
+  @include position(relative, 293px);
+  @include flex(space-between, flex-start, column);
+
+  //margin: 0 auto;
+  //padding: 23px 0 0 35px;
+  margin: 0 auto;
+  padding: 0 0 0 35px;
+  background: $secondary;
+
+  @media (max-width: $full-min) {
+    @include size(270px);
+    @include position(relative, 222px);
+
+    margin: 0;
+    padding: 0 0 0 32px;
+  }
+
+  &__outer {
+    @include max-size(392px, 608px);
+    @include size(100%, 100%);
+    @include position(relative);
+
+    @media (max-width: $full-min) {
+      @include max-size(340px, 365px);
+    }
+
+    &_first {
+      background-image: url("./assets/images/types-of-design-image-1-d.png");
+      background-repeat: no-repeat;
+
+      @media (max-width: $full-min) {
+        @include max-size(340px, 420px);
+
+        background-image: url("./assets/images/types-of-repair-image-1.png");
+        background-size: 340px 365px;
+      }
+    }
+
+    &_second {
+      background-image: url("./assets/images/types-of-design-image-2-d.png");
+      background-repeat: no-repeat;
+
+      @media (max-width: $full-min) {
+        @include max-size(340px, 485px);
+
+        background-image: url("./assets/images/types-of-repair-image-2.png");
+        background-size: 340px 365px;
+      }
+    }
+
+    &_third {
+      background-image: url("./assets/images/types-of-design-image-3-d.png");
+      background-repeat: no-repeat;
+
+      @media (max-width: $full-min) {
+        @include max-size(340px, 485px);
+        background-image: url(./assets/images/types-of-repair-image-3.png);
+        background-size: 340px 365px;
+      }
+
+    }
+
+  }
+
+  &__header {
+    @include fonts("Yeseva One", 18px, 25px);
+
+    //padding-bottom: 5px;
+    padding-bottom: 0;
+    margin: 24px 0 -1px -2px;
+
+    @media (max-width: $full-min) {
+      @include fonts("Yeseva One", 15px, 21px);
+      margin: 16px 0 3px 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__submit {
+    @extend %button;
+
+    @include size(230px, 54px);
+    @include position(relative, 28px, -35px);
+    @include fonts("Yeseva One", 18px, 25px, $secondary);
+
+    padding-right: 50px;
+    border-radius: 0;
+
+    @media (max-width: $full-min) {
+      @include size(190px, 40px);
+      @include position(relative, 21px, -32px);
+      @include fonts("Yeseva One", 15px, 21px, $secondary);
+
+      padding-right: 5px;
+    }
+  }
+}
+
+.types-of-design-package-menu {
+  padding: 0;
+  margin: 5px 0 0 0;
+  &__text {
+    @include fonts(FuturaBookC, 15px, 25px, $thirdly);
+    margin-bottom: 0.5px;
+    @media (max-width: $full-min) {
+      @include fonts(FuturaBookC, 13px, 22px, $thirdly);
+    }
+
+    &_hidden {
+      @media (max-width: $full-min) {
+        display: none;
+      }
+    }
+  }
+}
+
+/* DESIGN-STEPS */
+
+.pagination {
+  @extend %pagination;
+
+  @include size(205px);
+
+  margin-left: 7%;
+
+  @media (max-width: $full-min) {
+    display: none;
+  }
+}
+
+.design-steps {
+  @include size(100%, 1615px);
+
+  padding-top: 428px;
+  background: $background;
+
+  @media (max-width: $full-min) {
+    display: none;
+  }
+
+  &__inner {
+    @include size(86.0416%, 686px);
+    @include flex(space-between);
+
+    margin: 0 auto;
+  }
+}
+
+.slider-info {
+  @include size(27.2%, 100%);
+  @include flex(space-between, stretch, column);
+
+  & .pagination {
+    //@include size(287px, 14px);
+    @include size(279px, 14px);
+    margin: 0 0 96px 0;
+  }
+}
+
+.design-steps-heading {
+  @include size(100%, 104px);
+  @include flex(space-between, stretch, column);
+
+  &__how {
+    @include fonts(FuturaDemiC, 15px, 12px, $secondary);
+    margin: 0 0 0 -1px;
+  }
+
+  &__header {
+    @include fonts("Yeseva One", 27px, 37px, $primary);
+    margin: 0;
+    position: relative;
+
+    &:after{
+      position: absolute;
+      top: 55px;
+      left: 212px;
+      content: "";
+      width: 92px;
+      height: 1px;
+      background: $btn-sandy;
+    }
+  }
+}
+
+.design-steps-carousel-info {
+  @include size(100%, 300px);
+
+  &__page {
+    @include fonts("Yeseva One", 18px, 25px, $secondary);
+  }
+
+  &__header {
+    @include fonts("Yeseva One", 15px, 23px, $primary);
+    margin: 17px 0 9px 0;
+    //margin-top: 17px;
+  }
+
+  &__text {
+    @include fonts(FuturaBookC, 15px, 25px, $secondary);
+    margin: 10px 0 0 0;
+    //margin-top: 10px;
+  }
+}
+
+.slider {
+  @include size(61.75%, 100%);
+  @include flex(space-between, flex-start, column);
+}
+
+.design-steps-carousel-menu {
+  @include size(100%, 178px);
+  @include flex(space-between, stretch, column);
+
+  margin-top: 82px;
+
+  &__row {
+    @include flex(space-between, stretch, $wrap: wrap);
+  }
+
+  &__item {
+    @include size(100px, 71px);
+    @include flex(center, flex-start, column);
+  }
+
+  &__page {
+    @include fonts("Yeseva One", 15px, 25px, $thirdly);
+
+    border-bottom: 1px solid darken($primary, 30%);
+
+    &_selected {
+      border-bottom: 1px solid $primary;
+      color: $secondary;
+    }
+  }
+
+  &__text {
+    @include size(125px, 39px);
+    @include fonts(FuturaBookC, 15px, 18px, $thirdly);
+
+    margin-top: 7px;
+
+    &_selected {
+      color: $secondary;
+    }
+  }
+}
+
+.design-steps-carousel {
+
+  &__image {
+    @include size(100%, auto);
+  }
+}
+
+/* OUR-TEAM */
+
+.our-team {
+  @include size(100%,437px);
+  @include position(relative);
+
+  @media (max-width: $full-min) {
+    @include size(100%, 1705px);
+
+    background: $background;
+  }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    //height: 1896px;
+    height: 1800px;
+  }
+
+  &__inner {
+    @include size(73.82%, 843px);
+    @include position(absolute, -96%, 11.95%);
+
+    margin: 0 auto;
+
+    @media (max-width: $full-min) {
+      @include size(inherit, inherit);
+      @include position(static);
+    }
+  }
+
+  &__info {
+    @include position(relative);
+    @include fonts(FuturaBookC, 20px, 34px, $background);
+
+    //padding-top: 64px;
+    //padding-left: 30px;
+    padding-top: 44px;
+    padding-left: 33px;
+    text-align: center;
+
+    &:before {
+      @include size(55px, 2px);
+      @include position(absolute, 18%, 50%);
+
+      content: "";
+      background: $primary;
+      transform: translateX(calc(50% - 38px));
+
+      @media (max-width: $full-min) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.br-tablet{
+  display: none;
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    display: flex;
+  }
+  @media screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+    display: flex;
+  }
+}
+
+
+.our-team-heading {
+  @extend %logo;
+
+  @include size(100%, 153px);
+  @include flex(space-between, center, column);
+  padding: 0 0 0 35px;
+
+  @media (max-width: $viewport-5) {
+    @include size(100%, 250px);
+    padding: 61px 0 33px 0;
+    margin: 0;
+  }
+
+  @media (min-width: $viewport-5) and (max-width: $full-min) {
+    @include size(100%, 250px);
+    padding: 0;
+  }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    height: 280px;
+    padding: 62px 0 46px 0;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    width: 100%;
+    height: 172px;
+    margin: 0 0 38px 0;
+    padding: 0;
+  }
+
+  &__header {
+    @include fonts("Yeseva One", 20px, 28px, $secondary);
+    margin: 11px 0 12px 0;
+    @media (max-width: $full-min) {
+      @include fonts("Yeseva One", 22px, 30px, $secondary);
+    }
+  }
+
+  &__text {
+    @include fonts(FuturaBookC, 20px, 27px, $secondary);
+
+    text-align: center;
+
+    @media (max-width: $full-min) {
+      @include fonts(FuturaBookC, 15px, 20px, $secondary);
+
+      padding: 0;
+    }
+  }
+}
+
+.our-team-profiles {
+  @include size(100%, 449px);
+  @include flex(space-between);
+
+  margin: 47px auto 0 auto;
+
+  @media (max-width: $full-min) {
+    @include size(340px, 1455px);
+    @include position(static);
+    @include flex(space-between, stretch, column);
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    height: 1425px;
+  }
+}
+
+.our-team-profile {
+  @include size(307px);
+  @include position(relative);
+
+  @media (max-width: $full-min) {
+    @include size(100%, 449px);
+  }
+
+  &__icon {
+    @include position(absolute, -15px, -20px);
+
+    z-index: 1;
+  }
+
+  &__image {
+    @include size(305px, 357px);
+    @include position(absolute, 35px, 35px)
+  }
+
+  &:first-child > div {
+    background-image: url("./assets/images/our-team-image-1-d.png");
+    background-repeat: no-repeat;
+
+    @media (max-width: $full-min) {
+      background-image: url("./assets/images/our-team-image-1-m.png");
+    }
+  }
+
+  &:nth-child(2) > div {
+    background-image: url("./assets/images/our-team-image-2-d.png");
+    background-repeat: no-repeat;
+
+    @media (max-width: $full-min) {
+      background-image: url("./assets/images/our-team-image-2-m.png");
+      background-position: 0 21px;
+    }
+  }
+
+  &:last-child > div {
+    background-image: url("./assets/images/our-team-image-3-d.png");
+    background-repeat: no-repeat;
+
+    @media (max-width: $full-min) {
+      background-image: url("./assets/images/our-team-image-3-m.png");
+      background-position: 0 21px;
+    }
+  }
+}
+
+.our-team-profile-info {
+  @include size(233px, 137px);
+  @include position(relative, 277px, 20px);
+
+  text-align: center;
+  background: $secondary;
+
+  @media (max-width: $full-min) {
+    left: 32px;
+  }
+
+  &__name {
+    @include fonts("Yeseva One", 18px, 25px);
+
+    padding-top: 18px;
+  }
+
+  &__profession {
+    @include fonts(FuturaBookC, 18px, 26px);
+    padding: 4px 0 6px 0;
+  }
+
+  &__experience {
+    @extend %button;
+
+    @include size(100%, 44px);
+    @include fonts("Yeseva One", 13px, 41px, $secondary);
+
+    margin-top: 15px;
+    text-align: center;
+    border-radius: 0;
+  }
+}
+
+/* OUR-CLIENTS */
+
+.our-clients {
+  @include size(100%, 996px);
+
+  @media (max-width: $full-min) {
+    display: none;
+  }
+
+  &__inner {
+    @include size(85.83%, 642px);
+    margin: 88px auto 0 auto;
+    //margin: 89px auto 0 auto;
+  }
+}
+
+.our-clients-heading {
+  @extend %logo;
+  margin: 0 0 2px 0;
+  @include size(100%, 187px);
+
+  &__header {
+    @include fonts("Yeseva One", 20px, 28px, $background);
+    margin: 0;
+  }
+
+  &__icon {
+    margin-top: 10px;
+  }
+
+  &__text {
+    @include fonts(FuturaBookC, 20px, 27px, $background);
+
+    margin-top: 19px;
+    text-align: center;
+  }
+}
+
+.our-clients-profiles {
+  @include flex(space-between);
+}
+
+.our-clients-profile {
+  @include size(376px, 428px);
+  @include position(relative);
+
+  padding: 0 31px 0 20px;
+
+  &__client {
+    @include size(100%, 121px);
+    @include flex(space-between, center);
+  }
+
+  &__name {
+    @include size(225px);
+    @include fonts("Yeseva One", 18px, 23px, $background);
+  }
+
+  &__review {
+    @include fonts(FuturaBookC, 15px, 28px, $thirdly);
+
+    margin-top: -8px;
+    margin-left: 1px;
+  }
+}
+
+.our-clients-profile-buttons {
+  @include size(293px, 54px);
+  //@include position(relative, 64px, -19px);
+  @include position(relative, 48px, -19px);
+  @include flex(space-between);
+  @include fonts("Yeseva One", 17px, 24px, $secondary);
+
+  &__square {
+    @extend %button;
+
+    @include size(135px, 100%);
+
+    padding-left: 19%;
+    background-image: url("./assets/images/our-clients-button-icon-2.svg");
+    background-position: 17px center;
+    background-repeat: no-repeat;
+    border-radius: 0;
+  }
+
+  &__period {
+    @extend %button;
+
+    @include size(157px, 100%);
+
+    padding-left: 16%;
+    background-image: url("./assets/images/our-clients-button-icon-1.svg");
+    background-position: 16px center;
+    background-repeat: no-repeat;
+    border-radius: 0;
+  }
+}
+
+/* CONTACTS */
+
+.contacts {
+  @include size(100%, 953px);
+  @include position(relative);
+
+  background-image: url("./assets/images/contacts-background.png");
+  background-position: center -1px;
+
+  @media (max-width: $tablet-min) {
+    @include size(100%, 1087px);
+
+    padding: 0 17px;
+    background: $background;
+  }
+  @media (min-width: $tablet-min) and (max-width: $viewport-5) {
+    height: 840px;
+  }
+
+  @media (min-width: $viewport-5) and (max-width: $viewport-9) {
+    @include size(100%, 820px);
+
+    padding: 0 17px;
+    background: $background;
+  }
+
+  &__background {
+    @include size(100%, 100%);
+    @include position(absolute,0 ,0);
+
+    z-index: -1;
+
+    @media (min-width: $viewport-5) and (max-width: $viewport-9) {
+      display: none;
+    }
+  }
+}
+
+.contacts-form {
+  @include size(520px, 435px);
+  @include flex(space-around, space-between, column);
+
+  margin: 0 auto 0 auto;
+  text-align: center;
+
+  @media (max-width: $screen-min) {
+    @include size(100%, 619px);
+    @include flex(space-around, space-between, $direction: column);
+    max-width: 375px;
+
+  }
+
+  &__outer {
+    @include size(61.32%, 445px);
+    @include position(relative, -222px);
+
+    margin-left: 289px;
+    background: $background;
+
+    @media (min-width: $screen-min) and (max-width: $full-min) {
+      margin: 0 auto;
+      top: 300px;
+    }
+
+    @media (max-width: $viewport-9) {
+      @include size(100%, 100%);
+      @include position(static);
+
+      margin:  0 auto;;
+    }
+  }
+
+  &__header {
+    @include position(relative, 8px);
+    @include fonts("Yeseva One", 20px, 28px, $secondary);
+    top: -9px;
+    @media (max-width: $screen-min) {
+      @include position(static);
+
+      @include position(relative, 23px);
+    }
+  }
+
+  &__label {
+
+    @extend %label;
+    @media (max-width: $screen-min) {
+      line-height: 25px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__input {
+    @extend  %input;
+    @extend %label;
+    width: 100%;
+    border-bottom: 1px solid $thirdly;
+    margin: 0 0 -23px 0px;
+    @media (max-width: $screen-min) {
+      line-height: 25px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__name-phone {
+    @include flex(space-between);
+    margin: -38px 0 27px 0;
+    @extend %label;
+    @media (max-width: $screen-min) {
+      //@include size(100%, 149px);
+      @include size(100%, 157px);
+      @include flex(space-between, stretch, column);
+      //padding-top: 39px;
+      padding-top: 26px
+    }
+
+    & #contacts-form__name {
+      @include size(231px);
+      height: 28px;
+      @media (max-width: $screen-min) {
+        @include size(100%);
+        line-height: 25px;
+
+      }
+    }
+
+    & #contacts-form__phone {
+      @include size(231px);
+      height: 28px;
+      @media (max-width: $screen-min) {
+        @include size(100%);
+        line-height: 25px;
+      }
+    }
+  }
+
+
+  &#contacts-form__question {
+    @extend %label;
+    height: 28px;
+    @media (max-width: $screen-min) {
+      //padding-top: 20px;
+      padding-top: 10px;
+
+
+    }
+
+  }
+  .request-form__label {
+
+    height: 28px;
+    @extend %label;
+    @media (max-width: $screen-min) {
+      //padding-top: 20px;
+      padding-top: 5px;
+      margin: -7px 0 0px 0px;
+      line-height: 25px;
+    }
+  }
+
+
+  & .custom-checkbox {
+    padding-bottom: 4px;
+    margin: 20px 0 0 0;
+    @media (max-width: $screen-min) {
+      justify-content: flex-start;
+      //@include position(relative, -27px);
+      @include position(relative, -25px);
+    }
+
+    &__text {
+      padding-left: 10px;
+    }
+  }
+
+  &__submit {
+    @extend %button;
+
+    @include size(200px, 51px);
+    @include fonts(FuturaDemiC, 15px, 26px, $secondary);
+
+    align-self: center;
+
+    @media (max-width: $screen-min) {
+      @include size(100%, 51px);
+      //@include position(relative, -19px);
+      @include position(relative, -17px);
+    }
+  }
+}
+
+.contacts-map {
+  @include size(925px, 465px);
+  @include position(absolute, 44.3%, 49.8%);
+
+  overflow: hidden;
+  transform: translateX(-50%);
+
+  @media  (max-width: $viewport-5) {
+    @include position(absolute, 57%, 4.9%);
+    @include size(340px, 255px);
+
+    transform: translateX(0);
+  }
+
+  @media (min-width: $viewport-5) and (max-width: $full-min) {
+    display: none;
+  }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    display: none;
+  }
+
+  &__image {
+    @include position(relative, -244px, -199px);
+
+    display: block;
+
+    @media (max-width: $viewport-5) {
+      @include position(relative, -384px, -465px);
+
+      transform: scale(0.37, 0.37);
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      display: none;
+    }
+  }
+}
+
+.contacts-coordinates {
+  @include position(relative, -174px);
+
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    top: -126px;
+    left: auto;
+    width: 71%;
+    margin: 0 auto;
+  }
+  @media (min-width: $screen-min) and (max-width: $full-min) {
+    top: -300px;
+  }
+
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    top: -138px;
+  }
+
+  @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  &__address {
+    @include size(580px);
+    @include fonts("Yeseva One", 20px, 28px, $primary);
+    padding-top: 3px;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (max-width: $viewport-9) {
+      @include size(100%);
+      @include fonts("Yeseva One", 18px, 25px, $primary);
+      padding-top: 0;
+    }
+
+    @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+      line-height: 25px;
+    }
+
+  }
+
+  &__social {
+    @include size(71px);
+    @include flex(space-between);
+
+    margin: 25px auto 0 auto;
+
+    @media (max-width: $viewport-9) {
+      @include size(100px);
+      margin: 21px auto 0 auto;
+    }
+  }
+
+  &__button {
+    @include size(28px, 28px);
+
+    border-radius: 50%;
+    border: none;
+
+    @media (max-width: $viewport-9) {
+      @include size(39px, 39px);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:first-child {
+      background-image: url("./assets/images/contacts-icon-mail.svg");
+      background-size: 28px 28px;
+      background-repeat: no-repeat;
+
+      @media (max-width: $viewport-9) {
+        background-size: 39px, 39px;
+      }
+    }
+
+    &:last-child {
+      background-image: url("./assets/images/contacts-icon-instagram.svg");
+      background-size: 28px 28px;
+      background-repeat: no-repeat;
+
+      @media (max-width: $viewport-9) {
+        background-size: 39px, 39px;
+      }
+    }
+  }
+}
+
+/* FOOTER */
+
+.footer {
+  @media screen and (min-width: $mobile-min) and (max-width: $tablet-min) {
+    display: none;
+  }
+}
+
+.footer .logo{
+  width: 27%;
+  padding: 4px 0 0 10px;
+}
+
+.footer .nav{
+  width: 44%;
+  padding: 6px 14px 0 0;
+}
+
+.footer .call-request {
+  padding: 4px 0 0 0;
+  &__tel {
+    padding: 0 0 0 11px;
+
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      padding: 0 34px 0 12px;
+    }
+  }
+  &button {
+    padding-right: 9.5%;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (min-width: $screen-min) and (max-width: $screen-max) {
+      padding-right: 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+//------------------------------------
+//------------------------------------
 
