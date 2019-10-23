@@ -102,25 +102,7 @@ $bg-bright: #FFFFFF;
 $bg-dark: #131313;
 $btn-sandy: #E3B873;
 
-//media for
-//$mobile-min: 375px;
-//$mobile-max: 474px;//475 после 475 идет копия мобилки до 768
-//
-//$tablet-min: 475px; //5+7
-//$tablet-max: 768px;
-//
-//$screen-min: 769px;
-//$screen-max: 1199px;
-//
-//$full-min: 1200px;
-//$full-max: 1440px;
-//
-//
-//$viewport-5: 575.98px;
-//$screen-min: 767.98px;
-//$viewport-9: 991.98px;
-//$full-min: 1199.98px;
-//$full-max: 1439.98px;
+
 
 $mobile-min: 375px;
 $mobile-max: 474px;//475 после 475 идет копия мобилки до 768
@@ -146,6 +128,11 @@ $full-max: 1439.98px;
   border-radius: 2px;
   border: 1px solid $btn-sandy;
   background-color: $btn-sandy;
+
+  &:hover {
+    background-color: #9fc9e3;
+    border: 1px solid #74bbe3;
+  }
 }
 
 %button-secondary {
@@ -2006,6 +1993,7 @@ $full-max: 1439.98px;
         @include size($width: 338px);
         @include input($b-size: 1.5px, $b-type: solid, $b-color: rgba(255, 255, 255, 0.5));
         @include padding($p-bottom: 10px);
+        color: white;
       }
         &[type="text"]::-webkit-input-placeholder {
         @include font(FuturaBookC, 18px, 24px, #363636);
